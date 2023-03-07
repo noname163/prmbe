@@ -69,6 +69,7 @@ public class Fakedata {
                 .category(categories.get(1))
                 .price(4200000.0)
                 .modelYear(2019)
+                .description("The iPhone 8 and iPhone 8 Plus are smartphones designed, developed, and marketed by Apple Inc. They are the eleventh generation of the iPhone.")
                 .build());
                 products.add(Product.builder()
                 .name("Iphone 7 plush")
@@ -77,6 +78,7 @@ public class Fakedata {
                 .category(categories.get(1))
                 .price(3200000.0)
                 .modelYear(2018)
+                .description("The iPhone 7 and iPhone 7 Plus are smartphones designed, developed, and marketed by Apple Inc. They are the eleventh generation of the iPhone. ")
                 .build());
                 products.add(Product.builder()
                 .name("Iphone 6 plush")
@@ -85,6 +87,7 @@ public class Fakedata {
                 .category(categories.get(1))
                 .price(2200000.0)
                 .modelYear(2017)
+                .description("The iPhone 6 and iPhone 6 Plus are smartphones designed, developed, and marketed by Apple Inc. They are the eleventh generation of the iPhone.")
                 .build());
                 products.add(Product.builder()
                 .name("Iphone 5")
@@ -93,6 +96,7 @@ public class Fakedata {
                 .category(categories.get(1))
                 .price(1500000.0)
                 .modelYear(2016)
+                .description("The iPhone 5 is a smartphone that was designed and marketed by Apple Inc. It is the 6th generation iPhone, succeeding both the iPhone 4 and iPhone 4S, and preceding both the iPhone 5S and 5C")
                 .build());
                 products.add(Product.builder()
                 .name("Iphone 4")
@@ -101,6 +105,7 @@ public class Fakedata {
                 .category(categories.get(1))
                 .price(820000.0)
                 .modelYear(2015)
+                .description("The iPhone 4 is a smartphone that was designed and marketed by Apple Inc. It is the fourth generation of the iPhone lineup, succeeding the iPhone 3GS and preceding the 4S.")
                 .build());
                 products.add(Product.builder()
                 .name("Macbook 2020 pro")
@@ -109,6 +114,7 @@ public class Fakedata {
                 .category(categories.get(0))
                 .price(42000000.0)
                 .modelYear(2020)
+                .description("The MacBook Pro is a line of Mac laptops made by Apple Inc. Introduced in January 2006, it is the higher-end lineup in the MacBook family, sitting above the consumer-focused MacBook Air")
                 .build());
                 products.add(Product.builder()
                 .name("Macbook 2018 pro")
@@ -117,6 +123,7 @@ public class Fakedata {
                 .category(categories.get(0))
                 .price(32000000.0)
                 .modelYear(2018)
+                .description("With the 2018 MacBook Pro, it'll depend—making it a hard decision. The model I tried was well-equipped with the Core i9 processor.")
                 .build());
 
                 branchRepository.saveAll(brands);

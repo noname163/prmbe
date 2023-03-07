@@ -34,6 +34,8 @@ public class Product {
     private long id;
     @Column(name = "name", unique = true, nullable = false, length = 100)
     private String name;
+    @Column(name = "description", columnDefinition = "text")
+    private String description;
     @Column(name = "image_url", unique = false, nullable = true, length = 1000)
     private String image;
     @Column(name = "model_year", unique = false, nullable = false)

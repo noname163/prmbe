@@ -17,4 +17,5 @@ public class ProductUserResponse {
     private Double price;
     private String branch;
     private String category;
+    private String desciption;
 }

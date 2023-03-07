@@ -20,6 +20,7 @@ public class ProductUserMapper {
         .price(product.getPrice())
         .branch(product.getBrand().getBrandName())
         .category(product.getCategory().getName())
+        .desciption(product.getDescription())
         .build();
     }
 
