@@ -16,10 +16,12 @@ import com.pussinboots.prmproject.data.repositories.OrderItemRepository;
 import com.pussinboots.prmproject.data.repositories.OrderRepository;
 import com.pussinboots.prmproject.data.repositories.ProductRepository;
 import com.pussinboots.prmproject.dto.request.OrderItemRequest;
+import com.pussinboots.prmproject.dto.response.OrderItemResponse;
 import com.pussinboots.prmproject.exceptions.InsufficientStockException;
 import com.pussinboots.prmproject.exceptions.NotFoundException;
 import com.pussinboots.prmproject.exceptions.ProductNotFoundException;
 import com.pussinboots.prmproject.services.order.OrderItemService;
+import com.pussinboots.prmproject.mappers.OrderItemMapper;
 
 import jakarta.transaction.Transactional;
 
@@ -34,6 +36,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemMapper orderItemMapper;
 
     @Transactional
     public void createOrderItem(Order order, List<OrderItemRequest> orderItemsRequest) {
@@ -65,5 +70,11 @@ public class OrderItemServiceImpl implements OrderItemService {
         }
         orderItemRepository.saveAll(orderItems);
     }
-}
 
+    @Override
+    public List<OrderItemResponse> getOrderItemResponse(Long orderId) {
+        List<OrderItem> orderItems = orderItemRepository.findByOrderId(orderId);
+        return orderItemMapper.mapEntityToDto(orderItems);
+    }
+
+}

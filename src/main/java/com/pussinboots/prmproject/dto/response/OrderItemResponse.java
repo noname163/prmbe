@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class OrderItemResponse {
+    private Long id;
     private Integer quantity;
     private Double discount;
     private LocalDate orderDate;

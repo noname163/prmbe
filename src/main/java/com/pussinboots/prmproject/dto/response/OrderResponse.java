@@ -17,6 +17,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class OrderResponse {
+    private Long id;
     private LocalDate orderDate;
     private LocalDate requiredDate;
     private LocalDate shippedDate;
