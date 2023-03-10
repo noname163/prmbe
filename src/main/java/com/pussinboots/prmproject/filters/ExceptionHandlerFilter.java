@@ -44,7 +44,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
         response.setContentType("application/json");
         ExceptionResponse exceptionResponse = ExceptionResponse.builder().message(ex.getCause().getMessage()).build();
         try {
-            String json = convertObjectToJson(exceptionResponse);
+            String json = convertObjectToJson(exceptionResponse.getMessage());
             response.getWriter().write(json);
         } catch (IOException e) {
             log.info(e.getMessage());

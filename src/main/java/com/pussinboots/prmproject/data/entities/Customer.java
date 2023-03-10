@@ -47,7 +47,7 @@ public class Customer {
     @Column(name = "state", nullable = false, unique = true, length = 20)
     private String state;
     @Column(name = "zip_code", nullable = false, unique = true)
-    private Double zipCode;
+    private Long zipCode;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, unique = false, length = 10)
     private ERole role;

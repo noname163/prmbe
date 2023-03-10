@@ -10,6 +10,6 @@ import com.pussinboots.prmproject.data.entities.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     public Optional<Customer> findByEmail(String email);
-    public Optional<Customer> findByPhone(String email);
+    public Optional<Customer> findByPhone(String phone);
     public Optional<Customer> findByPhoneOrEmail(String phone, String email);
 }
