@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class OrderRequest {
-    private String phone;
+    private String email;
     private List<OrderItemRequest> orderItems;
 }

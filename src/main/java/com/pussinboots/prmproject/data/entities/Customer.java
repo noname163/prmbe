@@ -1,5 +1,6 @@
 package com.pussinboots.prmproject.data.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.pussinboots.prmproject.data.constans.ERole;
@@ -46,6 +47,10 @@ public class Customer {
     private String city;
     @Column(name = "state", nullable = false, unique = true, length = 20)
     private String state;
+    @Column(name = "otp", nullable = true, unique = true, length = 20)
+    private String otp;
+    @Column(name = "create_token_date")
+    private LocalDateTime createTokenDate;
     @Column(name = "zip_code", nullable = false, unique = true)
     private Long zipCode;
     @Enumerated(EnumType.STRING)

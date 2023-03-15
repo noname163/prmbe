@@ -1,5 +1,7 @@
 package com.pussinboots.prmproject.data.entities;
 
+import java.time.LocalDateTime;
+
 import com.pussinboots.prmproject.data.constans.ERole;
 
 import jakarta.persistence.Column;
@@ -41,6 +43,10 @@ public class Staff {
     private String firstName;
     @Column(name = "last_name", nullable = false, unique = false, length = 20)
     private String lastName;
+    @Column(name = "otp", nullable = true, unique = false, length = 20)
+    private String otp;
+    @Column(name = "create_token_date")
+    private LocalDateTime createTokenDate;
     @Column(name = "active", nullable = false, unique = false, length = 20)
     private Boolean active;
     @ManyToOne(targetEntity = Staff.class)

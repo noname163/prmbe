@@ -38,12 +38,12 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void createOrder(OrderRequest orderRequest) {
 
-        String phone = orderRequest.getPhone();
-        Optional<Customer> customerOtp = customerRepository.findByPhone(phone);
+        String email = orderRequest.getEmail();
+        Optional<Customer> customerOtp = customerRepository.findByEmail(email);
         List<OrderItemRequest> orderItemRequests = orderRequest.getOrderItems();
         
         if (customerOtp.isEmpty()) {
-            throw new NotFoundException("Cannot found user with phone " + phone);
+            throw new NotFoundException("Cannot found user with phone " + email);
         }
 
         Customer customer = customerOtp.get();
@@ -57,10 +57,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResponse> getOrder(String phone) {
-        Optional<Customer> customerOtp = customerRepository.findByPhone(phone);
+    public List<OrderResponse> getOrder(String email) {
+        Optional<Customer> customerOtp = customerRepository.findByEmail(email);
         if(customerOtp.isEmpty()){
-            throw new NotFoundException("Cannot found user with phone " + phone);
+            throw new NotFoundException("Cannot found user with phone " + email);
         }
         Customer customer = customerOtp.get();
         List<Order> orders = orderRepository.findByCustomerId(customer.getId());

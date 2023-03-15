@@ -18,5 +18,6 @@ public class OrderItemResponse {
     private LocalDate orderDate;
     private LocalDate shipDate;
     private String productName;
+    private Double price;
     private String productImage;
 }

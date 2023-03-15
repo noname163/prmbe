@@ -7,5 +7,5 @@ import com.pussinboots.prmproject.dto.response.OrderResponse;
 
 public interface OrderService {
     public void createOrder(OrderRequest orderRequest);
-    public List<OrderResponse> getOrder(String phone);
+    public List<OrderResponse> getOrder(String email);
 }

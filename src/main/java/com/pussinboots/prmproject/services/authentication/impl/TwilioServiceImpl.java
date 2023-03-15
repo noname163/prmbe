@@ -24,7 +24,7 @@ public class TwilioServiceImpl implements TwilioService {
 
     @Override
     public void sendSMS(String phoneNumber) {
-        String message = "Your OTP use for login is: " + otpGenarateService.genarateOtp();
+        String message = "Your OTP use for login is: " + otpGenarateService.genarateOtp(phoneNumber);
         twilioConfig.twilioConnect();
         Message.creator(
                 new PhoneNumber(phoneNumber),
@@ -35,7 +35,7 @@ public class TwilioServiceImpl implements TwilioService {
     @Override
     public String sendSMSString(String phoneNumber) {
         try {
-            String message = "Your OTP use for login is: " + otpGenarateService.genarateOtp();
+            String message = "Your OTP use for login is: " + otpGenarateService.genarateOtp(phoneNumber);
             twilioConfig.twilioConnect();
             Message.creator(
                     new PhoneNumber(phoneNumber),

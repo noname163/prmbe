@@ -20,7 +20,7 @@ import com.pussinboots.prmproject.dto.response.OrderItemResponse;
 import com.pussinboots.prmproject.dto.response.OrderResponse;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/api/orders")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -33,10 +33,10 @@ public class OrderController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{phone}")
-    public ResponseEntity<List<OrderResponse>> getOrders(@PathVariable String phone){
+    @GetMapping("/{email}")
+    public ResponseEntity<List<OrderResponse>> getOrders(@PathVariable String email){
         return ResponseEntity.status(HttpStatus.OK).body(
-            orderService.getOrder(phone)
+            orderService.getOrder(email)
         );
     }
     @GetMapping("/order-items/{orderId}")

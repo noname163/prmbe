@@ -27,6 +27,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) {
         try {
             System.out.println("Access data");
+            System.out.println("Url " + request.getRequestURL());
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
             HttpStatus httpStatus = HttpStatus.BAD_REQUEST;

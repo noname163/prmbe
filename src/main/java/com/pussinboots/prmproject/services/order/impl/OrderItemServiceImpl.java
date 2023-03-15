@@ -43,6 +43,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Transactional
     public void createOrderItem(Order order, List<OrderItemRequest> orderItemsRequest) {
         Map<Long, Integer> productIds = new HashMap<>();
+        System.out.println("Create order");
         for (OrderItemRequest orderItem : orderItemsRequest) {
             long productId = orderItem.getProductId();
             int quantity = orderItem.getQuantity();
