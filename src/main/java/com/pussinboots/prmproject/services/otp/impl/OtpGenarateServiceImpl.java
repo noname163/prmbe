@@ -11,6 +11,7 @@ import com.pussinboots.prmproject.data.entities.Customer;
 import com.pussinboots.prmproject.data.entities.Staff;
 import com.pussinboots.prmproject.data.repositories.CustomerRepository;
 import com.pussinboots.prmproject.data.repositories.StaffRepository;
+import com.pussinboots.prmproject.dto.response.UserResponse;
 import com.pussinboots.prmproject.exceptions.ForbiddenException;
 import com.pussinboots.prmproject.services.otp.OtpGenarateService;
 
@@ -55,12 +56,11 @@ public class OtpGenarateServiceImpl implements OtpGenarateService {
     }
 
     @Override
-    public Boolean validationOtp(String email, String otp) {
+    public UserResponse validationOtp(String email, String otp) {
         System.out.println("Validation");
         Optional<Staff> staffOtp = staffRepository.findByEmail(email);
         Optional<Customer> customerOtp = customerRepository.findByEmail(email);
         LocalDateTime currenDateTime = LocalDateTime.now();
-        Boolean flag = false;
         Long validTime = 60l;
         if (staffOtp.isEmpty() && customerOtp.isEmpty()) {
             System.out.println("User empty");
@@ -69,36 +69,40 @@ public class OtpGenarateServiceImpl implements OtpGenarateService {
         if (!customerOtp.isEmpty()) {
             Customer customer = customerOtp.get();
             LocalDateTime optCreateDate = customer.getCreateTokenDate();
-            if(currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) > 0){
+            if (currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) > 0) {
                 System.out.println("Otp out of time");
                 throw new ForbiddenException("Otp code is out of time");
             }
-            if(!customer.getOtp().equals(otp)){
+            if (!customer.getOtp().equals(otp)) {
                 System.out.println("Otp Not Match");
                 throw new ForbiddenException("Otp code did not match");
             }
             if (customer.getOtp().equals(otp) &&
                     currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) <= 0) {
-                flag = true;
+                return UserResponse.builder()
+                        .email(email)
+                        .isAdmin(false).build();
             }
         }
         if (!staffOtp.isEmpty()) {
             Staff staff = staffOtp.get();
             LocalDateTime optCreateDate = staff.getCreateTokenDate();
-            if(currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) > 0){
+            if (currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) > 0) {
                 System.out.println("Otp out of time");
                 throw new ForbiddenException("Otp code is out of time");
             }
-            if(!staff.getOtp().equals(otp)){
+            if (!staff.getOtp().equals(otp)) {
                 System.out.println("Otp Not Match");
                 throw new ForbiddenException("Otp code did not match");
             }
             if (staff.getOtp().equals(otp) &&
                     currenDateTime.compareTo(optCreateDate.plusSeconds(validTime)) <= 0) {
-                flag = true;
+                return UserResponse.builder()
+                        .email(email)
+                        .isAdmin(true).build();
             }
         }
-        return flag;
+        return null;
     }
 
 }

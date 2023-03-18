@@ -1,7 +1,5 @@
 package com.pussinboots.prmproject.dto.response;
 
-import com.pussinboots.prmproject.data.entities.Category;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,4 +16,5 @@ public class ProductUserResponse {
     private String branch;
     private String category;
     private String desciption;
+    private Integer available;
 }

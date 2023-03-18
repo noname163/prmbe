@@ -7,18 +7,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.CommandLineRunner;
 
 import com.pussinboots.prmproject.data.repositories.ProductRepository;
+import com.pussinboots.prmproject.data.repositories.StaffRepository;
 import com.pussinboots.prmproject.data.repositories.UserRepositories;
 import com.pussinboots.prmproject.data.repositories.CategoryRepository;
 import com.pussinboots.prmproject.data.repositories.CustomerRepository;
 import com.pussinboots.prmproject.data.repositories.BrandRepository;
 import com.pussinboots.prmproject.data.repositories.StockRepository;
+import com.pussinboots.prmproject.data.repositories.StoreRepository;
 import com.pussinboots.prmproject.data.constans.ERole;
 import com.pussinboots.prmproject.data.entities.*;
 
 @Configuration
 public class Fakedata {
     @Bean
-    CommandLineRunner initDatabase(ProductRepository productRepository, CustomerRepository customerRepository,
+    CommandLineRunner initDatabase(ProductRepository productRepository, CustomerRepository customerRepository, 
+    StaffRepository staffRepository, StoreRepository storeRepository,
             CategoryRepository categoryRepository, BrandRepository branchRepository, StockRepository stockRepository) {
         return new CommandLineRunner() {
             @Override
@@ -33,6 +36,14 @@ public class Fakedata {
                         .zipCode(1200l)
                         .role(ERole.USER)
                         .build();
+                Staff staff = Staff.builder()
+                .active(true)
+                .email("vuive792001@gmail.com")
+                .phone("0123456789")
+                .firstName("admin")
+                .role(ERole.ADMIN)
+                .lastName("admin")
+                .build();
 
                 List<Brand> brands = new ArrayList<>();
                 brands.add(Brand.builder().brandName("Samsung").build());
@@ -78,10 +89,10 @@ public class Fakedata {
                 List<Stock> stocks = new ArrayList<>();
 
                 Stock stock1 = Stock.builder()
-                        .quantity(10)
+                        .quantity(15)
                         .build();
                 Stock stock2 = Stock.builder()
-                        .quantity(10)
+                        .quantity(12)
                         .build();
                 Stock stock3 = Stock.builder()
                         .quantity(10)
@@ -171,6 +182,8 @@ public class Fakedata {
 
                 customerRepository.save(user);
                 System.out.println("Insert user name " + user.getPhone());
+                staffRepository.save(staff);
+                System.out.println("Insert staff");
                 branchRepository.saveAll(brands);
                 System.out.println("Insert brand");
                 categoryRepository.saveAll(categories);

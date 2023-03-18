@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pussinboots.prmproject.dto.response.UserResponse;
 import com.pussinboots.prmproject.services.authentication.TwilioService;
 import com.pussinboots.prmproject.services.otp.OtpGenarateService;
 import com.pussinboots.prmproject.services.otp.SendOtpService;
@@ -28,7 +29,7 @@ public class AuthenController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/validation/{email}/{otp}")
-    public ResponseEntity<Boolean> validationOtp(@PathVariable String email, @PathVariable String otp){
+    public ResponseEntity<UserResponse> validationOtp(@PathVariable String email, @PathVariable String otp){
         return ResponseEntity.ok().body(
             otpGenarateService.validationOtp(email, otp)
         );

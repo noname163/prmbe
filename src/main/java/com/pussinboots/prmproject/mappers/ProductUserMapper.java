@@ -21,6 +21,7 @@ public class ProductUserMapper {
         .branch(product.getBrand().getBrandName())
         .category(product.getCategory().getName())
         .desciption(product.getDescription())
+        .available(product.getStock().getQuantity())
         .build();
     }
 
