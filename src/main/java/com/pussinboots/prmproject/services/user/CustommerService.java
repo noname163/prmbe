@@ -1,5 +1,7 @@
 package com.pussinboots.prmproject.services.user;
 
-public class CustommerService {
-    
+import com.pussinboots.prmproject.dto.request.CustomerRequest;
+
+public interface CustommerService {
+    public void createCustomer(CustomerRequest customerRequest);
 }

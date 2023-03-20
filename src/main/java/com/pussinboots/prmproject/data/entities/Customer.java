@@ -39,19 +39,19 @@ public class Customer {
     private String email;
     @Column(name = "first_name", nullable = false, unique = false, length = 50)
     private String firstName;
-    @Column(name = "last_name", nullable = false, unique = false, length = 20)
+    @Column(name = "last_name", nullable = true, unique = false, length = 20)
     private String lastName;
-    @Column(name = "street", nullable = false, unique = true, length = 30)
+    @Column(name = "street", nullable = true, unique = false, length = 30)
     private String street;
-    @Column(name = "city", nullable = false, unique = true, length = 20)
+    @Column(name = "city", nullable = true, unique = false, length = 20)
     private String city;
-    @Column(name = "state", nullable = false, unique = true, length = 20)
+    @Column(name = "state", nullable = true, unique = false, length = 20)
     private String state;
     @Column(name = "otp", nullable = true, unique = true, length = 20)
     private String otp;
     @Column(name = "create_token_date")
     private LocalDateTime createTokenDate;
-    @Column(name = "zip_code", nullable = false, unique = true)
+    @Column(name = "zip_code", nullable = true, unique = false)
     private Long zipCode;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, unique = false, length = 10)

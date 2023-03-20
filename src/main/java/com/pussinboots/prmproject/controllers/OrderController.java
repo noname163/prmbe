@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.pussinboots.prmproject.services.order.OrderItemService;
 import com.pussinboots.prmproject.services.order.OrderService;
+import com.pussinboots.prmproject.dto.request.OrderAdminRequest;
 import com.pussinboots.prmproject.dto.request.OrderItemRequest;
 import com.pussinboots.prmproject.dto.request.OrderRequest;
 import com.pussinboots.prmproject.dto.response.OrderItemResponse;
@@ -30,6 +31,11 @@ public class OrderController {
     @PostMapping()
     public ResponseEntity<Void> createOrder( @RequestBody OrderRequest orderRequest){
         orderService.createOrder(orderRequest);
+        return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/admin")
+    public ResponseEntity<Void> createOrderAdmin( @RequestBody OrderAdminRequest orderAdminRequest){
+        orderService.createOrder(orderAdminRequest);
         return ResponseEntity.noContent().build();
     }
 

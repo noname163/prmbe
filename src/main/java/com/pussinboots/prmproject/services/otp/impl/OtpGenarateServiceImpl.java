@@ -61,7 +61,7 @@ public class OtpGenarateServiceImpl implements OtpGenarateService {
         Optional<Staff> staffOtp = staffRepository.findByEmail(email);
         Optional<Customer> customerOtp = customerRepository.findByEmail(email);
         LocalDateTime currenDateTime = LocalDateTime.now();
-        Long validTime = 60l;
+        Long validTime = 63l;
         if (staffOtp.isEmpty() && customerOtp.isEmpty()) {
             System.out.println("User empty");
             throw new RuntimeException("Cannot found user with email " + email);

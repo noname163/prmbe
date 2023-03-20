@@ -44,7 +44,7 @@ public class Store {
     @Column(name = "state", nullable = false, unique = true, length = 20)
     private String state;
     @Column(name = "zip_code", nullable = false, unique = true)
-    private Double zipCode;
+    private Long zipCode;
     @OneToMany(mappedBy = "store")
     private List<Staff> staffs;
     @OneToOne(fetch = FetchType.LAZY)
